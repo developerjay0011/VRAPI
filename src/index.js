@@ -4,6 +4,7 @@ const cors = require('cors');
 const sequelize = require('./config/database');
 const authRoutes = require('./routes/auth');
 const inquiryRoutes = require('./routes/inquiry');
+const contactRoutes = require('./routes/contactRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -15,7 +16,7 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/inquiries', inquiryRoutes);
-
+app.use('/api/contacts', contactRoutes);
 // Database sync and server start
 const startServer = async () => {
   try {

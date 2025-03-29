@@ -30,3 +30,16 @@ CREATE TABLE IF NOT EXISTS Inquiries (
 -- Insert default admin user (password will be hashed by the application)
 INSERT INTO Users (email, password, role) VALUES 
 ('admin@example.com', 'admin123', 'admin');
+
+
+-- Create Contact Us table
+CREATE TABLE IF NOT EXISTS ContactUs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  fullName VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone VARCHAR(20) NOT NULL,
+  subject VARCHAR(255) NOT NULL,
+  message TEXT NOT NULL,
+  createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
