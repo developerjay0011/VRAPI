@@ -5,6 +5,7 @@ const sequelize = require('./config/database');
 const authRoutes = require('./routes/auth');
 const inquiryRoutes = require('./routes/inquiry');
 const contactRoutes = require('./routes/contactRoutes');
+const loanRoutes = require('./routes/Loan');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -17,10 +18,12 @@ app.use(express.json());
 app.use('/api/auth', authRoutes);
 app.use('/api/inquiries', inquiryRoutes);
 app.use('/api/contacts', contactRoutes);
+app.use('/api/loans', loanRoutes);
 // Database sync and server start
 const startServer = async () => {
   try {
-    await sequelize.sync();
+    // Force sync to recreate tables
+    // await sequelize.sync({ force: true });
     console.log('Database synced successfully');
     
     app.listen(PORT, () => {
